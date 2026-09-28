@@ -1,6 +1,6 @@
 cabal-version:      2.4
 name:               tictactoe
-version:            1.0.0
+version:            1.0.1
 synopsis:           Крестики-нолики 5x5 в консоли
 license:            MIT
 license-file:       LICENSE
