@@ -32,7 +32,7 @@ jobs:
       - run: cabal update
       - run: cabal build
       - run: cp "$(cabal list-bin tictactoe)" ${{ matrix.asset }}
-      - run: echo 0 | ./${{ matrix.asset }}
+      - run: echo 0 | LC_ALL=C ./${{ matrix.asset }}
       - if: github.event_name == 'release'
         run: gh release upload ${{ github.ref_name }} ${{ matrix.asset }}
         env:
