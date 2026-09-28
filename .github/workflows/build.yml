@@ -1,0 +1,38 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            asset: tictactoe-linux-x86_64
+          - os: macos-latest
+            asset: tictactoe-macos-arm64
+          - os: windows-latest
+            asset: tictactoe-windows-x86_64.exe
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '9.10'
+      - run: cabal update
+      - run: cabal build
+      - run: cp "$(cabal list-bin tictactoe)" ${{ matrix.asset }}
+      - if: github.event_name == 'release'
+        run: gh release upload ${{ github.ref_name }} ${{ matrix.asset }}
+        env:
+          GH_TOKEN: ${{ github.token }}
