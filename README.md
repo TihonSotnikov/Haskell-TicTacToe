@@ -25,6 +25,25 @@
 
 - Счёт против бота хранится в `score.dat` между запусками. Очки зависят от сложности: победа над лёгким ботом даёт +5, над сложным +125; поражение от лёгкого стоит -125, от сложного -5.
 
+## Установка
+
+Готовые исполняемые файлы для Linux x86_64, macOS arm64 и Windows x86_64 публикуются на странице [Releases](https://github.com/TihonSotnikov/Haskell-TicTacToe/releases). Windows-версия запускается напрямую.
+
+Linux:
+
+```bash
+chmod +x tictactoe-linux-x86_64
+./tictactoe-linux-x86_64
+```
+
+macOS (файл не подписан, поэтому с него снимается карантин):
+
+```bash
+xattr -d com.apple.quarantine tictactoe-macos-arm64
+chmod +x tictactoe-macos-arm64
+./tictactoe-macos-arm64
+```
+
 ## Сборка
 
 Требуются GHC и cabal-install. Зависимости: `base`, `random`.
@@ -33,15 +52,10 @@
 git clone https://github.com/TihonSotnikov/Haskell-TicTacToe.git
 cd Haskell-TicTacToe
 cabal build
-```
-
-Готовые исполняемые файлы публикуются на странице [Releases](https://github.com/TihonSotnikov/Haskell-TicTacToe/releases).
-
-## Использование
-
-```bash
 cabal run tictactoe
 ```
+
+## Использование
 
 Пункт меню выбирается цифрой, ход вводится как номер строки и столбца через пробел, например `3 3`. Выход - пункт `0` или Ctrl+D.
 
