@@ -55,7 +55,8 @@ modifyScore scoreRef f = atomicModifyIORef' scoreRef (\s -> (f s, ()))
 
 readScoreFile :: IO Int
 readScoreFile = do
-    result <- try (readFile "score.dat") :: IO (Either IOException String)
+    -- читаем файл целиком, чтобы он закрылся до записи нового счёта
+    result <- try (readFile "score.dat" >>= \s -> length s `seq` return s) :: IO (Either IOException String)
     case result of
         Left _  -> return 0
         Right content -> 
