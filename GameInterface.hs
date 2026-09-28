@@ -9,11 +9,15 @@ import System.IO
 import System.Random (newStdGen)
 import System.Exit (exitSuccess)
 import Text.Read (readMaybe)
+import System.Info (os)
+import Control.Monad (unless)
 
 -- запуск программы
 runGameLoop :: IO ()
 runGameLoop = do
     hSetBuffering stdout NoBuffering
+    -- при локали C/POSIX вывод кириллицы падает, поэтому явно включаем UTF-8
+    unless (os == "mingw32") (hSetEncoding stdout utf8)
     score <- initScore
     menuLoop score ""
 
