@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Haskell-2010-a8c8f0?style=flat&logo=haskell&logoColor=white" alt="Haskell 2010">
-  <img src="https://img.shields.io/badge/License-MIT-d4c8f0?style=flat" alt="License MIT">
+  <img src="https://img.shields.io/badge/Haskell-2010-5D4F85?style=flat&logo=haskell&logoColor=white" alt="Haskell 2010">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat" alt="License MIT">
 </p>
 
 <p align="center">
